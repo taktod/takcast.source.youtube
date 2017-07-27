@@ -2,13 +2,16 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as ReactBootstrap from "react-bootstrap";
 
+import {Youtube} from "..";
+
 var Form = ReactBootstrap.Form;
 var FormGroup = ReactBootstrap.FormGroup;
 var FormControl = ReactBootstrap.FormControl;
 var InputGroup = ReactBootstrap.InputGroup;
 var Button = ReactBootstrap.Button;
 
-export var pickupComponent = ():any => {
+export var pickupComponent = (youtube:Youtube):any => {
+  youtube._setYoutubeId(null);
   return class pickupComponent extends React.Component<{}, {}> {
     state = {id: ""};
     constructor() {
@@ -18,6 +21,7 @@ export var pickupComponent = ():any => {
     public open() {
       var id = (ReactDOM.findDOMNode(this.refs.id) as HTMLInputElement).value
       this.setState({id: id});
+      youtube._setYoutubeId(id);
     }
     public render() {
       return(

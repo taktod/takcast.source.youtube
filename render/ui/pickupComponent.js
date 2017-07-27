@@ -18,7 +18,8 @@ var FormGroup = ReactBootstrap.FormGroup;
 var FormControl = ReactBootstrap.FormControl;
 var InputGroup = ReactBootstrap.InputGroup;
 var Button = ReactBootstrap.Button;
-exports.pickupComponent = function () {
+exports.pickupComponent = function (youtube) {
+    youtube._setYoutubeId(null);
     return (function (_super) {
         __extends(pickupComponent, _super);
         function pickupComponent() {
@@ -30,6 +31,7 @@ exports.pickupComponent = function () {
         pickupComponent.prototype.open = function () {
             var id = ReactDOM.findDOMNode(this.refs.id).value;
             this.setState({ id: id });
+            youtube._setYoutubeId(id);
         };
         pickupComponent.prototype.render = function () {
             return (React.createElement(Form, null,
